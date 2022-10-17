@@ -1,5 +1,5 @@
 # We're using Debian Slim Buster image
-FROM python:3.8.5-slim-buster
+FROM python:3.10.7-slim-buster
 
 ENV PIP_NO_CACHE_DIR 1
 
@@ -65,11 +65,11 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/EmikoRobot
-RUN git clone https://github.com/NAINA-XD/NAINA-ROBOT /root/Naina
-WORKDIR /root/Naina
+RUN git clone https://github.com/Darkranger00/SARENA-ROBOT /root/sarena
+WORKDIR /root/sarena
 
 #Copy config file to /root/Naina/Naina
-COPY ./Naina/config.py* /root/Naina/Naina/
+COPY ./sarena/config.py* /root/sarena/sarena/
 
 ENV PATH="/home/bot/bin:$PATH"
 
@@ -77,4 +77,4 @@ ENV PATH="/home/bot/bin:$PATH"
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","Naina"]
+CMD ["python3","-m","sarena"]
